@@ -40,9 +40,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Handlebars Middleware
-app.engine(".hbs", exphbs.engine({ extname: ".hbs", defaultLayout: "main" }));
+app.engine('handlebars', exphbs.engine({ extname: '.handlebars', defaultLayout: "main"}));
+app.set('view engine', 'handlebars');
+app.set("views", "./views");
 
-app.set("view engine", "handlebars");
 
 app.use(cookieParser());
 app.use(
