@@ -13,7 +13,9 @@ require("./models/Story");
 
 // Passport Config
 require("./config/passport")(passport);
+require("./config/passport-github")(passport);
 require("./config/local-passport")(passport);
+
 
 // Load Routes
 const index = require("./routes/index");

@@ -20,9 +20,9 @@ router.get(
 );
 
 // Github Login
-app.get("/github", passport.authenticate("github", { scope: ["user:email"] }));
+router.get("/github", passport.authenticate("github", { scope: ["user:email"] }));
 
-app.get(
+router.get(
   "/github/callback",
   passport.authenticate("github", { failureRedirect: "/" }),
   function (req, res) {
