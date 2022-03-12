@@ -10,16 +10,13 @@ router.get('/', ensureGuest, (req, res) => {
 
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
   Story.find({user:req.user.id})
+  .lean()
   .then(stories => {
     res.render('index/dashboard', {
       stories: stories,
       user: req.user.toJSON(),
     });
   }); 
-});
-
-router.get('/about', (req, res) => {
-  res.render('index/about');
 });
 
 module.exports = router;
