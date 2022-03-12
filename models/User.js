@@ -7,9 +7,13 @@ const UserSchema = new Schema({
     type:String,
     required: false
   },
+  githubId: {
+    type: String,
+    required: false,
+  },
   email:{
     type: String,
-    required: true
+    required: false
   },
   password: {
     type: String,

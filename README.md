@@ -18,11 +18,10 @@
 
 ## Overview
 
-- **Made in Express.** Built in Express using Handlebars template engine.
+The app is inspired from one of the Express apps which was built by Brad Traversy in one of his Node courses. It had only Google Auth in it with a CRUD model on stories. I've added Github login as well aside from the Google Login which original app had. Aside from this, it also has a local authentication system to register and login for those who do not wish to login using
+their Google or Github accounts.
 
-- **Google Oauth integration.** Users can sign in using their Google credentials through Google Oauth2.
-
-- **Material CSS.** Material CSS is used to provide CSS styles to various UI components.
+It uses short-term cookies for persistent session creation which would be done upon successful passport authentication through any of the allowed login methods. This Application is built in Express JS using MongoDB as the database provider, Mongoose package is used for ORM and materialize CSS is used for styling.
 
 ## Development Setup
 
@@ -40,6 +39,8 @@ npm start
 
 - 12/3/2022 - Added local passport authentication with Google Auth, users can now register and login if they do not 
 have a Google account.
+
+- 13/3/2022 - Added github passport authentication which uses Github OAuth2 API.
 
 ## Project Screenshots
 
