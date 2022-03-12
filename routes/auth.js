@@ -3,11 +3,31 @@ const router = express.Router();
 const passport = require("passport");
 const mongoose = require("mongoose");
 const User = mongoose.model("users");
-const bcrypt = require("bcryptjs")
+const bcrypt = require("bcryptjs");
 
+// Google Login
 router.get(
   "/google",
   passport.authenticate("google", { scope: ["profile", "email"] })
+);
+
+router.get(
+  "/google/callback",
+  passport.authenticate("google", { failureRedirect: "/" }),
+  (req, res) => {
+    res.redirect("/dashboard");
+  }
+);
+
+// Github Login
+app.get("/github", passport.authenticate("github", { scope: ["user:email"] }));
+
+app.get(
+  "/github/callback",
+  passport.authenticate("github", { failureRedirect: "/" }),
+  function (req, res) {
+    res.redirect("/dashboard");
+  }
 );
 
 router.get("/login", (req, res) => {
@@ -63,14 +83,6 @@ router.post("/register", (req, res) => {
     }
   });
 });
-
-router.get(
-  "/google/callback",
-  passport.authenticate("google", { failureRedirect: "/" }),
-  (req, res) => {
-    res.redirect("/dashboard");
-  }
-);
 
 router.get("/logout", (req, res) => {
   req.logout();
