@@ -69,6 +69,9 @@ app.set("views", "./views");
 app.use(cookieParser());
 app.use(
   session({
+    cookie : {
+      maxAge: 3600000 // see below
+    },
     secret: "secret",
     resave: false,
     saveUninitialized: false,
