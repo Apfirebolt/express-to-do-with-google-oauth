@@ -36,6 +36,11 @@ npm start
 
 ```
 
+## Updates
+
+- 12/3/2022 - Added local passport authentication with Google Auth, users can now register and login if they do not 
+have a Google account.
+
 ## Project Screenshots
 
 Screenshots would be added as development is in progress. Below is the welcome page of the application.

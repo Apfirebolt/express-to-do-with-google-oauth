@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
-const User = require("../models/User");
+const mongoose = require("mongoose");
+const User = mongoose.model("users");
+const bcrypt = require("bcryptjs")
 
 router.get(
   "/google",
@@ -16,7 +18,7 @@ router.get("/register", (req, res) => {
   res.render("auth/register");
 });
 
-router.post("/login", (req, res) => {
+router.post("/login", (req, res, next) => {
   try {
     passport.authenticate("local", {
       successRedirect: "/dashboard",
@@ -32,28 +34,32 @@ router.post("/register", (req, res) => {
     if (user) {
       res.redirect("/auth/register");
     } else {
-      const newUser = new User({
-        firstName: req.body.firstNname,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        password: req.body.password,
-      });
-
-      bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(newUser.password, salt, (err, hash) => {
-          if (err) throw err;
-          newUser.password = hash;
-          newUser
-            .save()
-            .then((user) => {
-              res.redirect("/auth/login");
-            })
-            .catch((err) => {
-              console.log(err);
-              return;
-            });
+      try {
+        const newUser = new User({
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          email: req.body.email,
+          password: req.body.password,
         });
-      });
+
+        bcrypt.genSalt(10, (err, salt) => {
+          bcrypt.hash(newUser.password, salt, (err, hash) => {
+            if (err) throw err;
+            newUser.password = hash;
+            newUser
+              .save()
+              .then((user) => {
+                res.redirect("/auth/login");
+              })
+              .catch((err) => {
+                console.log(err);
+                return;
+              });
+          });
+        });
+      } catch (err) {
+        console.log(err);
+      }
     }
   });
 });
