@@ -12,7 +12,8 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
   Story.find({user:req.user.id})
   .then(stories => {
     res.render('index/dashboard', {
-      stories: stories
+      stories: stories,
+      user: req.user.toJSON(),
     });
   }); 
 });
