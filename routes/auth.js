@@ -15,6 +15,7 @@ router.get(
   "/google/callback",
   passport.authenticate("google", { failureRedirect: "/" }),
   (req, res) => {
+    req.flash('success_msg', 'Successfully logged in using your Google account.');
     res.redirect("/dashboard");
   }
 );
@@ -26,6 +27,7 @@ router.get(
   "/github/callback",
   passport.authenticate("github", { failureRedirect: "/" }),
   function (req, res) {
+    req.flash('success_msg', 'Successfully logged in using your Github account.');
     res.redirect("/dashboard");
   }
 );
@@ -86,6 +88,7 @@ router.post("/register", (req, res) => {
 
 router.get("/logout", (req, res) => {
   req.logout();
+  req.flash('success_msg', 'Successfully logged out.');
   res.redirect("/");
 });
 

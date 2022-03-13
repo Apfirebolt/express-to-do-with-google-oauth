@@ -23,6 +23,7 @@ router.post('/', (req, res) => {
     new Story(newStory)
       .save()
       .then(story => {
+        req.flash('success_msg', 'Added story successfully.');
         res.redirect(`/dashboard`);
       });
   } catch(err) {

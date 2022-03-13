@@ -34,6 +34,18 @@ npm install
 npm start
 
 ```
+The snippet below contains env variables from where you need to fetch the Google and Github credentials. For Google it can be obtained from app developer console.
+
+```
+module.exports = {
+  mongoURI:process.env.MONGO_URI,
+  googleClientID:process.env.GOOGLE_CLIENT_ID,
+  googleClientSecret:process.env.GOOGLE_CLIENT_SECRET,
+  githubClientID:process.env.GITHUB_CLIENT_ID,
+  githubClientSecret:process.env.GITHUB_CLIENT_SECRET
+}
+
+```
 
 ## Updates
 

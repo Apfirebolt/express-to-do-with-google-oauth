@@ -31,3 +31,17 @@ footer{
 #delete-form{
   display:inline;
 }
+
+.success-msg {
+  padding: 1rem;
+  background: aquamarine;
+  text-align: center;
+  font-weight: 600;
+}
+
+.error-msg {
+  padding: 1rem;
+  background: indianred;
+  text-align: center;
+  font-weight: 600;
+}
