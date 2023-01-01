@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const passport = require("passport");
+require('dotenv').config()
 
 // Load Models
 require("./models/User");
@@ -14,7 +15,7 @@ require("./models/Story");
 
 // Passport Config
 require("./config/passport")(passport);
-require("./config/passport-github")(passport);
+// require("./config/passport-github")(passport);
 require("./config/local-passport")(passport);
 
 
