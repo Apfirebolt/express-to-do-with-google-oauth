@@ -14,7 +14,7 @@ require("./models/User");
 require("./models/Story");
 
 // Passport Config
-require("./config/passport")(passport);
+// require("./config/passport")(passport);
 // require("./config/passport-github")(passport);
 require("./config/local-passport")(passport);
 
@@ -38,10 +38,7 @@ const {
 mongoose.Promise = global.Promise;
 // Mongoose Connect
 mongoose
-  .connect(keys.mongoURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(keys.mongoURI)
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
 
