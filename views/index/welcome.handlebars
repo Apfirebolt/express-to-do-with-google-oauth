@@ -1,13 +1,60 @@
-<h3 class="text-red darken-3">Welcome</h3>
-<p class="blue-text darken-1">Welcome to Express StoryBooks 1.0.0</p>
-<p>Post stories from the best and worst of your life and choose for them to be read by the world or completley private as your own personal diary</p>
-<p>A simple app whose existence means to test Google, Github Oauth along with the normal express registration, meaning a user
-  should be able to create a fresh account on the website but should be able to login using Google and Github accounts as well.
-</p>
-{{#if user}}
-{{else}}
-  <a class="btn yellow darken-4" href="/auth/google"><i class="fa fa-google left"></i> Login With Google</a>
-  <a class="btn blue darken-4" href="/auth/github"><i class="fa fa-github left"></i> Login With Github</a>
-  <a class="btn red darken-4" href="/auth/login"><i class="fa fa-sign-in left"></i> Login </a>
-  <a class="btn green darken-4" href="/auth/register"><i class="fa fa-user left"></i> Register</a>
-{{/if}}
+<div class="row">
+  <div class="col s12 m8 offset-m2 l6 offset-l3">
+    <div class="card-panel z-depth-3 center-align mt-5 p-5" style="border-radius: 12px;">
+      
+      <!-- Header Section -->
+      <h3 class="red-text text-darken-3 font-weight-bold mb-2" style="font-size: 2.5rem;">Welcome</h3>
+      <h5 class="blue-text text-darken-1 mb-4" style="font-weight: 500;">Express StoryBooks <span class="grey-text text-darken-1" style="font-size: 1.2rem;">v1.0.0</span></h5>
+      
+      <!-- Divider -->
+      <div class="divider my-4"></div>
+
+      <!-- Description -->
+      <p class="grey-text text-darken-3 mb-4" style="line-height: 1.6; font-size: 1.05rem;">
+        Capture the best and worst moments of your life. Choose to share your stories with the world or keep them completely private as your personal diary.
+      </p>
+
+      <p class="grey-text text-darken-1 mb-5" style="font-size: 0.95rem; font-style: italic;">
+        Built to test Google and GitHub OAuth alongside traditional authentication, allowing seamless sign-ups and multi-platform logins.
+      </p>
+
+      <!-- Auth Actions -->
+      {{#if user}}
+        <!-- Optional: Add a welcome back or dashboard link if user is logged in -->
+        <a class="btn waves-effect waves-light green darken-3 col s12 py-3 mb-3" href="/dashboard" style="height: auto; font-size: 1.1rem; border-radius: 6px;">
+          <i class="material-icons left">dashboard</i> Go to Dashboard
+        </a>
+      {{else}}
+        <div class="row">
+          <div class="col s12 mb-3">
+            <a class="btn waves-effect waves-light red darken-3 col s12 py-3" href="/auth/google" style="height: auto; font-size: 1rem; border-radius: 6px; text-transform: none; display: flex; align-items: center; justify-content: center;">
+              <i class="fa fa-google left" style="font-size: 1.2rem; margin-right: 10px;"></i> Continue with Google
+            </a>
+          </div>
+          <div class="col s12 mb-3">
+            <a class="btn waves-effect waves-light blue darken-4 col s12 py-3" href="/auth/github" style="height: auto; font-size: 1rem; border-radius: 6px; text-transform: none; display: flex; align-items: center; justify-content: center;">
+              <i class="fa fa-github left" style="font-size: 1.2rem; margin-right: 10px;"></i> Continue with GitHub
+            </a>
+          </div>
+        </div>
+
+        <div class="divider my-3"></div>
+        <p class="grey-text mb-3" style="font-size: 0.9rem;">or use your email account</p>
+
+        <div class="row">
+          <div class="col s12 m6 mb-2">
+            <a class="btn waves-effect waves-light orange darken-3 col s12" href="/auth/login" style="border-radius: 6px; text-transform: none;">
+              <i class="fa fa-sign-in left"></i> Login
+            </a>
+          </div>
+          <div class="col s12 m6">
+            <a class="btn waves-effect waves-light green darken-4 col s12" href="/auth/register" style="border-radius: 6px; text-transform: none;">
+              <i class="fa fa-user left"></i> Register
+            </a>
+          </div>
+        </div>
+      {{/if}}
+
+    </div>
+  </div>
+</div>
